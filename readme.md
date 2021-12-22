@@ -3,7 +3,7 @@
 ## Objetive ##
 
 * evaluate basic programming concepts
-* evaluate javascript and react native knowledge 
+* evaluate javascript and react knowledge 
 * evaluate management of external libraries ~ specifically: Redux and api client
 * evaluate basic terminal and git skills
 * evaluate handling queries to an api
