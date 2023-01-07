@@ -1,8 +1,8 @@
 import { useEffect } from "react"
 import "./App.css"
 import { Gallery } from "./pages/Gallery"
-import { useAppDispatch, useAppSelector } from "./store/hooks"
-import { fetchAllSuperheroes } from "./store/superHeroes"
+import { useAppDispatch } from "./store/hooks"
+import { fetchAllSuperheroes } from "./store/superheroes"
 
 function App() {
   const dispatch = useAppDispatch()

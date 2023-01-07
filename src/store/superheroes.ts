@@ -1,26 +1,26 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import superheroApi from "../api/superhero"
 
-// TODO: type superHeroes correctly
-export type SuperHeroesState = {
+// TODO: type superheroes correctly
+export type SuperheroesState = {
   data: any[]
   loading: boolean
   error: boolean
 }
 
-const initialState: SuperHeroesState = {
+const initialState: SuperheroesState = {
   data: [],
   loading: false,
   error: false,
 }
 
 export const fetchAllSuperheroes = createAsyncThunk(
-  "superHeroes/fetchSuperHeroes",
+  "superheroes/fetchSuperheroes",
   async () => await superheroApi.fetchAll()
 )
 
-export const superHeroes = createSlice({
-  name: "superHeroes",
+export const superheroes = createSlice({
+  name: "superheroes",
   initialState,
   reducers: {},
   extraReducers: (builder) => {

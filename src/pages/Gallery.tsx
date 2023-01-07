@@ -1,9 +1,9 @@
 import { useAppSelector } from "../store/hooks"
-import { superHeroesSelector } from "../store/selectors"
+import { superheroesSelector } from "../store/selectors"
 
 // TODO: improve loading and error display
 export function Gallery() {
-  const { data: superHeroes, error, loading } = useAppSelector(superHeroesSelector)
+  const { data: superheroes, error, loading } = useAppSelector(superheroesSelector)
 
   if (loading) {
     return <div>loading...</div>
@@ -15,7 +15,7 @@ export function Gallery() {
 
   return (
     <ul>
-      {superHeroes.map((hero) => (
+      {superheroes.map((hero) => (
         <li>{hero.name}</li>
       ))}
     </ul>
