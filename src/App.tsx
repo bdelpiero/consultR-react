@@ -1,12 +1,17 @@
-import { useState } from "react"
-import reactLogo from "./assets/react.svg"
+import { useEffect } from "react"
 import "./App.css"
-import { useAppSelector } from "./store/hooks"
+import { Gallery } from "./pages/Gallery"
+import { useAppDispatch, useAppSelector } from "./store/hooks"
+import { fetchAllSuperheroes } from "./store/superHeroes"
 
 function App() {
-  const value = useAppSelector((state) => state.test.value)
+  const dispatch = useAppDispatch()
 
-  return <div className="App">{value}</div>
+  useEffect(() => {
+    dispatch(fetchAllSuperheroes())
+  }, [])
+
+  return <Gallery />
 }
 
 export default App

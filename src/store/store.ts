@@ -1,16 +1,15 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit"
-import { State, testSlice } from "./super-heroes"
+import { SuperHeroesState, superHeroes } from "./superHeroes"
 
 export const store = configureStore({
   reducer: {
-    // TODO: rename reducer
-    test: testSlice.reducer,
+    superHeroes: superHeroes.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
 })
 
 export type RootState = {
-  test: State
+  superHeroes: SuperHeroesState
 }
 export type AppDispatch = typeof store.dispatch
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>
