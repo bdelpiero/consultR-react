@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import superheroApi from "api/superhero"
+import superheroApi from "src/api/superhero"
 
 // TODO: type superheroes correctly
 export type SuperheroesState = {

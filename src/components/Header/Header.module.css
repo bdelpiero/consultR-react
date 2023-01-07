@@ -9,4 +9,5 @@
   background: rgba(256, 256, 256, 0.9);
   border-bottom: 1px solid gray;
   box-sizing: border-box;
+  z-index: 10;
 }

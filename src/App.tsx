@@ -1,13 +1,14 @@
 import { useEffect } from "react"
-import { Header } from "components/Header/Header"
-import { Gallery } from "pages/Gallery/Gallery"
-import { useAppDispatch } from "store/hooks"
-import { fetchAllSuperheroes } from "store/superheroes"
+import { Header } from "src/components/Header/Header"
+import { Gallery } from "src/pages/Gallery/Gallery"
+import { useAppDispatch } from "src/store/hooks"
+import { fetchAllSuperheroes } from "src/store/superheroes"
 import "./App.css"
 
 function App() {
   const dispatch = useAppDispatch()
 
+  // TODO: check if the api supports pagination
   useEffect(() => {
     dispatch(fetchAllSuperheroes())
   }, [])
