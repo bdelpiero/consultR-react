@@ -1,8 +1,9 @@
 import { useEffect } from "react"
+import { Header } from "components/Header/Header"
+import { Gallery } from "pages/Gallery/Gallery"
+import { useAppDispatch } from "store/hooks"
+import { fetchAllSuperheroes } from "store/superheroes"
 import "./App.css"
-import { Gallery } from "./pages/Gallery"
-import { useAppDispatch } from "./store/hooks"
-import { fetchAllSuperheroes } from "./store/superheroes"
 
 function App() {
   const dispatch = useAppDispatch()
@@ -11,7 +12,12 @@ function App() {
     dispatch(fetchAllSuperheroes())
   }, [])
 
-  return <Gallery />
+  return (
+    <>
+      <Header />
+      <Gallery />
+    </>
+  )
 }
 
 export default App

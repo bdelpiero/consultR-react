@@ -1,0 +1,12 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 14px;
+  font-weight: 700;
+  background: rgba(256, 256, 256, 0.9);
+  border-bottom: 1px solid gray;
+  box-sizing: border-box;
+}
