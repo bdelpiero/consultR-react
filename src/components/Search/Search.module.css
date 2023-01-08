@@ -1,0 +1,10 @@
+.searchBar {
+  display: block;
+  max-width: 600px;
+  width: 80%;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}

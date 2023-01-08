@@ -1,5 +1,7 @@
+import React, { useState } from "react"
 import { ErrorMsg } from "src/components/ErrorMsg/ErrorMsg"
 import { Loader } from "src/components/Loader/Loader"
+import { Search } from "src/components/Search/Search"
 import { useAppSelector } from "src/store/hooks"
 import { superheroesSelector } from "src/store/selectors"
 import styles from "./Gallery.module.css"
@@ -21,8 +23,8 @@ function Card({ superhero }: { superhero: any }) {
   )
 }
 
-// TODO: add search bar?
 // TODO: add navigate back to the top?
+// TODO: add infinite scroll?
 // TODO: make sure all images are loaded:
 //       https://medium.com/programming-essentials/how-to-detect-when-all-images-are-loaded-in-a-react-component-d831d0c675b2
 export function Gallery() {
@@ -32,6 +34,8 @@ export function Gallery() {
     loading,
   } = useAppSelector(superheroesSelector)
 
+  const [searchText, setSearchText] = useState("")
+
   if (loading) {
     return <Loader />
   }
@@ -40,11 +44,23 @@ export function Gallery() {
     return <ErrorMsg errorMsg={"There was an error fetching superheroes"} />
   }
 
+  const filteredHeroes = superheroes.filter((hero) =>
+    hero.name.toLocaleLowerCase().includes(searchText)
+  )
+
   return (
-    <ul className={styles.gallery}>
-      {superheroes.map((hero) => (
-        <Card key={hero.id} superhero={hero} />
-      ))}
-    </ul>
+    <div className={styles.container}>
+      <Search
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          setSearchText(e.target.value.toLocaleLowerCase())
+        }}
+        placeholderText={"Search superhero by name"}
+      />
+      <ul className={styles.gallery}>
+        {filteredHeroes.map((hero) => (
+          <Card key={hero.id} superhero={hero} />
+        ))}
+      </ul>
+    </div>
   )
 }
