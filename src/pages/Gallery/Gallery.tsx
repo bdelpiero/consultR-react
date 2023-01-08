@@ -1,3 +1,4 @@
+import { Loader } from "src/components/Loader/Loader"
 import { useAppSelector } from "src/store/hooks"
 import { superheroesSelector } from "src/store/selectors"
 import styles from "./Gallery.module.css"
@@ -7,7 +8,6 @@ function Card({ superhero }: { superhero: any }) {
   // TODO: use bigger image for desktop?
   const bgImage = superhero.images.sm
 
-  // TODO: validate that properties exist on superhero object?
   return (
     <li className={styles.card}>
       <img src={bgImage} alt={`${superhero.name} bg image`} />
@@ -20,14 +20,20 @@ function Card({ superhero }: { superhero: any }) {
   )
 }
 
-// TODO: improve loading and error display
+// TODO: improve error display
 // TODO: add search bar?
 // TODO: add navigate back to the top?
+// TODO: make sure all images are loaded:
+//       https://medium.com/programming-essentials/how-to-detect-when-all-images-are-loaded-in-a-react-component-d831d0c675b2
 export function Gallery() {
-  const { data: superheroes, error, loading } = useAppSelector(superheroesSelector)
+  const {
+    data: superheroes,
+    error,
+    loading,
+  } = useAppSelector(superheroesSelector)
 
   if (loading) {
-    return <div>loading...</div>
+    return <Loader />
   }
 
   if (error) {
