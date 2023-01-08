@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.errorMsg {
+  color: rgb(220, 16, 16);
+  padding: 40px;
+  text-align: center;
+}

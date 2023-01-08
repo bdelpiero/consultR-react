@@ -1,3 +1,4 @@
+import { ErrorMsg } from "src/components/ErrorMsg/ErrorMsg"
 import { Loader } from "src/components/Loader/Loader"
 import { useAppSelector } from "src/store/hooks"
 import { superheroesSelector } from "src/store/selectors"
@@ -20,7 +21,6 @@ function Card({ superhero }: { superhero: any }) {
   )
 }
 
-// TODO: improve error display
 // TODO: add search bar?
 // TODO: add navigate back to the top?
 // TODO: make sure all images are loaded:
@@ -37,7 +37,7 @@ export function Gallery() {
   }
 
   if (error) {
-    return <div>There was an error fetching super heroes data</div>
+    return <ErrorMsg errorMsg={"There was an error fetching superheroes"} />
   }
 
   return (
