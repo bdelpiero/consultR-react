@@ -7,16 +7,14 @@
   gap: 15px;
 }
 
-/* TODO: clip the bottom of the images  */
+/* TODO: clip the bottom of the images in a better way  */
 .card {
   max-width: calc(100% / 2);
   position: relative;
   display: inline-block;
-  border-radius: 5px;
-}
-
-.card img {
-  border-radius: 5px;
+  border-radius: 10px;
+  height: 220px;
+  overflow: hidden;
 }
 
 .card:after {
@@ -27,7 +25,6 @@
   width: 100%;
   height: 50%;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
-  border-radius: 5px;
 }
 
 /* Bottom left text */
