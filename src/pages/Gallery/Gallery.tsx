@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { ErrorMsg } from "src/components/ErrorMsg/ErrorMsg"
 import { Loader } from "src/components/Loader/Loader"
+import { ScrollToTopButton } from "src/components/ScrollToTopButton/ScrollToTopButton"
 import { Search } from "src/components/Search/Search"
 import { useAppSelector } from "src/store/hooks"
 import { superheroesSelector } from "src/store/selectors"
@@ -23,7 +24,6 @@ function Card({ superhero }: { superhero: any }) {
   )
 }
 
-// TODO: add navigate back to the top?
 // TODO: add infinite scroll?
 // TODO: make sure all images are loaded:
 //       https://medium.com/programming-essentials/how-to-detect-when-all-images-are-loaded-in-a-react-component-d831d0c675b2
@@ -61,6 +61,7 @@ export function Gallery() {
           <Card key={hero.id} superhero={hero} />
         ))}
       </ul>
+      <ScrollToTopButton />
     </div>
   )
 }
