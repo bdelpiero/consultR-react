@@ -26,7 +26,11 @@ export function Superhero() {
   }, [id])
 
   if (loading) {
-    return <Loader />
+    return (
+      <div className={styles.loaderContainer}>
+        <Loader />
+      </div>
+    )
   }
 
   if (error) {
