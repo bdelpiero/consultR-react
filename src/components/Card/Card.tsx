@@ -11,14 +11,19 @@ export function Card({
   // TODO: use bigger image for desktop?
   const bgImage = superhero.images[imgSize]
 
+  // TODO: add support for all imageSizes
+  const cardStyle = imgSize === ImageSize.SM ? styles.smCard : styles.mdCard
+  const textStyle =
+    imgSize === ImageSize.SM ? styles.smCardText : styles.mdCardText
+
   return (
-    <li className={styles.card}>
+    <div className={cardStyle}>
       <img src={bgImage} alt={`${superhero.name} bg image`} />
-      <div className={styles.cardText}>
+      <div className={textStyle}>
         <h3>{superhero.name}</h3>
         <p>Height: {superhero.appearance.height?.[1] || ""}</p>
         <p>Weight: {superhero.appearance.weight?.[1] || ""}</p>
       </div>
-    </li>
+    </div>
   )
 }

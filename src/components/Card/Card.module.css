@@ -1,13 +1,18 @@
 /* TODO: clip the bottom of the images in a better way  */
-.card {
+.smCard,
+.mdCard {
   position: relative;
   display: inline-block;
   border-radius: 10px;
-  height: 220px;
   overflow: hidden;
 }
 
-.card:after {
+.smCard {
+  height: 220px;
+}
+
+.smCard:after,
+.mdCard:after {
   content: "";
   position: absolute;
   right: 0;
@@ -18,7 +23,8 @@
 }
 
 /* Bottom left text */
-.cardText {
+.smCardText,
+.mdCardText {
   position: absolute;
   bottom: 15px;
   left: 12px;
@@ -26,14 +32,26 @@
   z-index: 1;
 }
 
-.cardText h3 {
+.smCardText h3 {
   font-weight: 600;
   font-size: 16px;
   margin-bottom: 6px;
 }
 
-.cardText p {
+.mdCardText h3 {
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.smCardText p {
   font-size: 13px;
   line-height: 16px;
+  font-weight: 300;
+}
+
+.mdCardText p {
+  font-size: 18px;
+  line-height: 22px;
   font-weight: 300;
 }

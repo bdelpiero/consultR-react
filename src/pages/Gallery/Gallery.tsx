@@ -47,9 +47,11 @@ export function Gallery() {
       />
       <ul className={styles.gallery}>
         {filteredHeroes.map((hero) => (
-          <Link key={hero.id} to={`/superhero/${hero.id}`}>
-            <Card superhero={hero} />
-          </Link>
+          <li>
+            <Link key={hero.id} to={`/superhero/${hero.id}`}>
+              <Card superhero={hero} />
+            </Link>
+          </li>
         ))}
       </ul>
       <ScrollToTopButton />

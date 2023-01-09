@@ -15,3 +15,11 @@
   margin-top: 20px;
   width: 100%;
 }
+
+.gallery li {
+  cursor: pointer;
+}
+
+.gallery li:hover {
+  transform: scale(1.05);
+}
