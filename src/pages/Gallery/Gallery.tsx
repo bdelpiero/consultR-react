@@ -6,10 +6,7 @@ import { Loader } from "src/components/Loader/Loader"
 import { ScrollToTopButton } from "src/components/ScrollToTopButton/ScrollToTopButton"
 import { Search } from "src/components/Search/Search"
 import { useAppDispatch, useAppSelector } from "src/store/hooks"
-import {
-  superheroesListSelector,
-  superheroesSelector,
-} from "src/store/selectors"
+import { superheroesSelector } from "src/store/selectors"
 import { fetchAllSuperheroes } from "src/store/superheroes"
 import styles from "./Gallery.module.css"
 
