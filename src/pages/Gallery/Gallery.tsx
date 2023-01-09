@@ -24,19 +24,19 @@ function LoadMore() {
 // TODO: add animations to images
 // TODO: split into cleaner components
 export function Gallery() {
-  const [searchText, setSearchText] = useState("")
+  const { data, loading, error } = useAppSelector(superheroesSelector)
 
   const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(fetchAllSuperheroes())
   }, [])
 
-  const { data, loading, error } = useAppSelector(superheroesSelector)
-
+  const [searchText, setSearchText] = useState("")
   const filteredHeroes = data.superheroes.filter((hero) => {
     return hero.name.toLocaleLowerCase().includes(searchText)
   })
 
+  // handle infinite scroll
   const { loadedSuperheroes, hasNextPage, loadMore } =
     useLoadSuperheroes(filteredHeroes)
   const [sentryRef] = useInfiniteScroll({
