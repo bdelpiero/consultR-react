@@ -1,6 +1,8 @@
 # Photo Grid Exercise
 
-react challenge for ConsultR
+react challenge for ConsultR.
+
+The website is responsive but it is designed for mobile (following the provided mockup).
 
 ## Requirements
 
