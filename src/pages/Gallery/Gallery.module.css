@@ -24,13 +24,6 @@
   transform: scale(1.05);
 }
 
-.loaderContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
 .loadMoreContainer {
   display: flex;
   justify-content: center;

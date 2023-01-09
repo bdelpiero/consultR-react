@@ -4,10 +4,12 @@ import { Link } from "react-router-dom"
 import { Card } from "src/components/Card/Card"
 import { ErrorMsg } from "src/components/ErrorMsg/ErrorMsg"
 import { Loader } from "src/components/Loader/Loader"
+import { Loading } from "src/components/Loading/Loading"
 import { ScrollToTopButton } from "src/components/ScrollToTopButton/ScrollToTopButton"
 import { Search } from "src/components/Search/Search"
 import { useLoadSuperheroes } from "src/hooks/useLoadSuperheroes"
-import { useAppDispatch } from "src/store/hooks"
+import { useAppDispatch, useAppSelector } from "src/store/hooks"
+import { superheroesSelector } from "src/store/selectors"
 import { fetchAllSuperheroes } from "src/store/superheroes"
 import styles from "./Gallery.module.css"
 
@@ -19,7 +21,8 @@ function LoadMore() {
   )
 }
 
-// TODO: wait until all images are loaded before showing them
+// TODO: add animations to images
+// TODO: split into cleaner components
 export function Gallery() {
   const [searchText, setSearchText] = useState("")
 
@@ -28,8 +31,14 @@ export function Gallery() {
     dispatch(fetchAllSuperheroes())
   }, [])
 
-  const { superheroes, loading, error, hasNextPage, loadMore } =
-    useLoadSuperheroes()
+  const { data, loading, error } = useAppSelector(superheroesSelector)
+
+  const filteredHeroes = data.superheroes.filter((hero) => {
+    return hero.name.toLocaleLowerCase().includes(searchText)
+  })
+
+  const { loadedSuperheroes, hasNextPage, loadMore } =
+    useLoadSuperheroes(filteredHeroes)
   const [sentryRef] = useInfiniteScroll({
     loading,
     hasNextPage,
@@ -38,20 +47,12 @@ export function Gallery() {
   })
 
   if (loading) {
-    return (
-      <div className={styles.loaderContainer}>
-        <Loader />
-      </div>
-    )
+    return <Loading />
   }
 
   if (error) {
     return <ErrorMsg errorMsg={"There was an error fetching superheroes"} />
   }
-
-  const filteredHeroes = superheroes.filter((hero) =>
-    hero.name.toLocaleLowerCase().includes(searchText)
-  )
 
   return (
     <>
@@ -63,7 +64,7 @@ export function Gallery() {
           placeholderText={"Search superhero by name"}
         />
         <ul className={styles.gallery}>
-          {filteredHeroes.map((hero) => (
+          {loadedSuperheroes.map((hero) => (
             <li key={hero.id}>
               <Link to={`/superhero/${hero.id}`}>
                 <Card superhero={hero} />
