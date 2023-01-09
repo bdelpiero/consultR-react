@@ -2,7 +2,6 @@ import { Routes, Route, Navigate } from "react-router"
 import { Header } from "src/components/Header/Header"
 import { Gallery } from "src/pages/Gallery/Gallery"
 import { Superhero } from "./pages/Superhero/Superhero"
-import "./App.css"
 
 function App() {
   return (
