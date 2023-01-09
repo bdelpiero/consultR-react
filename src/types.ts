@@ -48,7 +48,7 @@ export interface Connections {
   relatives: string
 }
 
-enum ImageSize {
+export enum ImageSize {
   XS = "xs",
   SM = "sm",
   MD = "md",

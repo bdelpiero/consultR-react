@@ -22,7 +22,7 @@ export function ScrollToTopButton() {
 
   return (
     <div className={styles.goToTop} onClick={handleScrollUp}>
-      <BsFillArrowUpCircleFill color="lightgrey" size={50} />
+      <BsFillArrowUpCircleFill color="#2196F3" size={50} />
     </div>
   )
 }

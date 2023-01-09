@@ -6,6 +6,12 @@ async function fetchAll(): Promise<Superhero[]> {
   return response.json()
 }
 
+async function fetchById(id: string): Promise<Superhero> {
+  const response = await fetch(`${API_URL}/id/${id}.json`)
+  return response.json()
+}
+
 export default {
   fetchAll,
+  fetchById,
 }

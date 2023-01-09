@@ -1,22 +1,24 @@
 import { useEffect } from "react"
+import { Routes, Route, Navigate } from "react-router"
+import { useAppDispatch, useAppSelector } from "src/store/hooks"
+import { fetchAllSuperheroes } from "src/store/superheroes"
 import { Header } from "src/components/Header/Header"
 import { Gallery } from "src/pages/Gallery/Gallery"
-import { useAppDispatch } from "src/store/hooks"
-import { fetchAllSuperheroes } from "src/store/superheroes"
+import { Superhero } from "./pages/Superhero/Superhero"
+import { ErrorMsg } from "./components/ErrorMsg/ErrorMsg"
+import { Loader } from "./components/Loader/Loader"
+import { superheroesSelector } from "./store/selectors"
 import "./App.css"
 
 function App() {
-  const dispatch = useAppDispatch()
-
-  // TODO: check if the api supports pagination
-  useEffect(() => {
-    dispatch(fetchAllSuperheroes())
-  }, [])
-
   return (
     <>
       <Header />
-      <Gallery />
+      <Routes>
+        <Route path="/" element={<Gallery />} />
+        <Route path="/superhero/:id" element={<Superhero />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </>
   )
 }
