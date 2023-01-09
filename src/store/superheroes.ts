@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import superheroApi from "src/api/superhero"
+import { Superhero } from "src/types"
 
-// TODO: type superheroes correctly
 export type SuperheroesState = {
-  data: any[]
+  data: Superhero[]
   loading: boolean
   error: boolean
 }

@@ -5,10 +5,10 @@ import { ScrollToTopButton } from "src/components/ScrollToTopButton/ScrollToTopB
 import { Search } from "src/components/Search/Search"
 import { useAppSelector } from "src/store/hooks"
 import { superheroesSelector } from "src/store/selectors"
+import { Superhero } from "src/types"
 import styles from "./Gallery.module.css"
 
-// TODO: type superhero correctly
-function Card({ superhero }: { superhero: any }) {
+function Card({ superhero }: { superhero: Superhero }) {
   // TODO: use bigger image for desktop?
   const bgImage = superhero.images.sm
 
@@ -17,14 +17,14 @@ function Card({ superhero }: { superhero: any }) {
       <img src={bgImage} alt={`${superhero.name} bg image`} />
       <div className={styles.cardText}>
         <h3>{superhero.name}</h3>
-        <p>Height: {superhero.appearance.height[1]}</p>
-        <p>Weight: {superhero.appearance.weight[1]}</p>
+        <p>Height: {superhero.appearance.height?.[1] || ""}</p>
+        <p>Weight: {superhero.appearance.weight?.[1] || ""}</p>
       </div>
     </li>
   )
 }
 
-// TODO: add infinite scroll?
+// TODO: add infinite scroll
 // TODO: make sure all images are loaded:
 //       https://medium.com/programming-essentials/how-to-detect-when-all-images-are-loaded-in-a-react-component-d831d0c675b2
 export function Gallery() {
