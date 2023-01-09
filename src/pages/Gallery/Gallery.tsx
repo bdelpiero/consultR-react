@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import { ErrorMsg } from "src/components/ErrorMsg/ErrorMsg"
 import { Loader } from "src/components/Loader/Loader"
 import { ScrollToTopButton } from "src/components/ScrollToTopButton/ScrollToTopButton"
@@ -25,13 +25,12 @@ function Card({ superhero }: { superhero: Superhero }) {
 }
 
 // TODO: add infinite scroll
-// TODO: make sure all images are loaded:
-//       https://medium.com/programming-essentials/how-to-detect-when-all-images-are-loaded-in-a-react-component-d831d0c675b2
+// TODO: wait until all images are loaded before showing them
 export function Gallery() {
   const {
     data: superheroes,
     error,
-    loading,
+    loading: loading,
   } = useAppSelector(superheroesSelector)
 
   const [searchText, setSearchText] = useState("")
